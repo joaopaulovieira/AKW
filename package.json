@@ -1,0 +1,66 @@
+{
+  "name": "@joaopaulo.vieira/akw",
+  "version": "1.0.0",
+  "description": "Automated Key Watcher",
+  "keywords": [
+    "shortcut",
+    "keyboard"
+  ],
+  "homepage": "https://github.com/joaopaulovieira/akw",
+  "bugs": {
+    "url": "https://github.com/joaopaulovieira/akw/issues",
+    "email": "vieira.joaopaulo.91@gmail.com"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Joao Paulo Vieira",
+    "email": "vieira.joaopaulo.91@gmail.com"
+  },
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "source": "./src/akw.js",
+  "main": "./dist/akw.js",
+  "umd:main": "./dist/akw.umd.js",
+  "module": "./dist/akw.esm.js",
+  "exports": "./dist/akw.modern.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:joaopaulovieira/transcriptore.git"
+  },
+  "scripts": {
+    "build": "microbundle --format esm,modern,umd,cjs --name AKW --no-compress && npm run update-public",
+    "update-public": "cp -a dist/. public/dist/",
+    "start": "npm run build && sirv public/ --host 0.0.0.0 --port 8080",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest ./src --coverage --silent",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test:coverage": "open coverage/lcov-report/index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.24.0",
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
+    "sirv-cli": "^1.0.11"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/*.js"
+    ]
+  }
+}

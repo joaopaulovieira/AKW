@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AKW - The Automated Key Watcher</title>
+  <meta name="description" content="AKW demonstration">
+  <meta name="author" content="João Paulo Vieira">
+  <style>
+    .top, .middle, .bottom {
+      height: 250px;
+    }
+    .top {
+      background: red;
+    }
+    .middle {
+      background: yellow;
+    }
+    .bottom {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="top" class="top" tabindex="-1"></div>
+  <div id="middle" class="middle" tabindex="-1"></div>
+  <div id="bottom" class="bottom" tabindex="-1"></div>
+  <script type="module">
+    import AKW from './dist/akw.modern.js';
+
+    const akw = new AKW(document.getElementById('top'), 'keydown');
+    window.akw = akw;
+  </script>
+  <!-- <script type="text/javascript" charset="utf-8" src="js/helpers.js"></script> -->
+</body>
+</html>
